@@ -6,21 +6,22 @@ resource "aws_instance" "instance1" {
   subnet_id = "${aws_subnet.artemis-public.id}"
   vpc_security_group_ids = ["${aws_security_group.artemis.id}"]
   provisioner "file" {
-    source      = "apache.sh"
-    destination = "/tmp/apache.sh"
+    source      = "example.sh"
+    destination = "/tmp/example.sh"
     connection {
       user        = "ec2-user"
       private_key = "${file("/Users/fsadykov/.ssh/id_rsa")}"
     }
   }
+
   provisioner "remote-exec" {
     connection {
       user        = "ec2-user"
       private_key = "${file("/Users/fsadykov/.ssh/id_rsa")}"
     }
     inline = [
-      "chmod +x /tmp/apache.sh",
-      "/tmp/apache.sh",
+      "chmod +x /tmp/example.sh",
+      "/tmp/example.sh",
     ]
   }
   associate_public_ip_address = true
