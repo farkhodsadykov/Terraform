@@ -13,16 +13,16 @@ tar -xzf latest.tar.gz
 cp wordpress/wp-config-sample.php wordpress/wp-config.php
 
 # Adding the DataBase to the conffile
-sed  "s|database_name_here|${var.wordpress_database}|g" -i wordpress/wp-config.php
+sed  "s|database_name_here|$1|g" -i wordpress/wp-config.php
 
 # This line we adding the our user to wordpress
-sed  "s|wordpress-user|${var.wordpress-user}|g" -i wordpress/wp-config.php
+sed  "s|wordpress-user|$2|g" -i wordpress/wp-config.php
 
 # Adding the password for our wordpress
-sed  "s|your_strong_password|${var.wordpress_pass}|g" -i wordpress/wp-config.php
+sed  "s|your_strong_password|$3|g" -i wordpress/wp-config.php
 
 # Adding the mysql host to the wordpress
-sed  "s|your_strong_password|${aws_instance.instance2.public_ip}|g" -i wordpress/wp-config.php
+sed  "s|localhost|$4|g" -i wordpress/wp-config.php
 # Copy the wordpress data to httpd
 cp -r wordpress/* /var/www/html/
 

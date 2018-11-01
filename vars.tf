@@ -8,25 +8,6 @@ variable "appname" {
   default = "artemis"
 }
 
-# The password  for mysql server
-variable "mysql_password" {
-  default = "Redhat2018"
-}
-
-# Our Database on MYSQL
-variable "wordpress_database" {
-  default = "wordpress"
-}
-
-# Our wordpress user on mysql
-variable "wordpress-user" {
-  default = "worduser"
-}
-
-# Our wordpress password
-variable "wordpress_pass" {
-  default = "xBDuJfUrscVWB"
-}
 
 # Variable call amis for each images for regions
 variable "amis" {
@@ -36,4 +17,20 @@ variable "amis" {
      us-east-2 = "ami-0b59bfac6be064b78"
    }
 
+}
+
+# variable for mysql user root pass
+variable "mysql_password" {
+  default = "Redhat2018"
+}
+
+
+# Variable v_data will store all credentials wordpres > mysql 
+variable "m_data" {
+  type = "map"
+  default = {
+     wordpress_user = "worduser"
+     wordpress_pass = "xBDuJfUrscVWB"
+     wordpress_database = "wordpress"
+   }
 }

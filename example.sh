@@ -2,7 +2,6 @@
 
 
 
-yum install $"{var.apps}" -y
-echo "This ip server ${aws_instance.instance2.public_ip}" > /tmp/test.txt
+sudo yum install $"{var.apps}" -y
 
-echo "${var.wordpress-user}" >> /tmp/test.txt
+echo "Wordpress user: $1, Wordpress pass: $2, Wordpress DATABASE: $3" >> /tmp/test.txt
